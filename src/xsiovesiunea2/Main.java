@@ -5,13 +5,21 @@ public class Main {
     public static void main(String[] args) {
         char upLeft = 'X';
         char upMiddle = 'X';
-        char upRight = 'X';
-        char middleLeft = 'X';
+        char upRight = '0';
+        char middleLeft = '0';
         char middleMiddle = '0';
-        char middleRight = '0';
-        char downLeft = '0';
-        char downMiddle = 'X';
-        char downRight = '0';
+        char middleRight = 'X';
+        char downLeft = 'X';
+        char downMiddle = '0';
+        char downRight = 'X';
+
+        System.out.println("  ```````````````````");
+        System.out.println("1 |  " + upLeft + "   |  " + upMiddle + "   |  " + upRight + "   |");
+        System.out.println("  ```````````````````");
+        System.out.println("2 |  " + middleLeft + "   |  " + middleMiddle + "   |  " + middleRight + "   |");
+        System.out.println("  ```````````````````");
+        System.out.println("3 |  " + downLeft + "   |  " + downMiddle + "   |  " + downRight + "   |");
+        System.out.println("  ````````````````````");
 
         int countX = 0;
         int countO = 0;
@@ -21,7 +29,7 @@ public class Main {
         int oWins = 0;
         String wrongPositions = "";
 
-        if (upLeft == ' '){
+        if (upLeft == '\u0000'){
             countEmpty++;
         }
         else {
@@ -175,22 +183,28 @@ public class Main {
             }
         }
         if (countWrongParameter>0){
-            System.out.println("Ati introdus " + countWrongParameter + " valori necorespunzatoare jocului X si 0! Va rugam verificati valorile variabilelor pe pozitiile: " + wrongPositions);
+            if (countWrongParameter == 1){
+                System.out.println("Ati introdus o valoare necorespunzatoare jocului X si 0! Va rugam verificati valoarea de pe pozitia: " + wrongPositions);
+            }
+            else {
+                System.out.println("Ati introdus " + countWrongParameter + " valori necorespunzatoare jocului X si 0! Va rugam verificati valorile variabilelor pe pozitiile: " + wrongPositions);
+            }
         }
         else {
             if (countEmpty==9) {
                 System.out.println("Incepeti prin a completa variabilele din joc. ");
-            }else {
+            }
+            else {
                 if (countO>countX){
                     System.out.println("Numarul de 0-uri nu poate depasi numarul de X-uri. Recompletati variabilele in consecinta!");
                 }
                 else {
                     if (countX>countO+1){
-                        System.out.println("Numarul de X-uri nu poate depasi numarul de 0-uri cu mai mult de 1. Recompletati variabilele in consecinta!");
+                        System.out.println("Numarul de X-uri nu poate depasi numarul de 0-uri cu mai mult de 1. Recompletati variabilele in consecinta.");
                     }
                     else {
                         if(countEmpty > 4){
-                            System.out.println("Completati in continuare variabilele nu sunt destule X-uri sau 0-uri pentru a se forma o linie sau diagonala");
+                            System.out.println("Completati in continuare variabilele, nu sunt destule X-uri sau 0-uri pentru a se forma o linie sau diagonala cu acceasi valoare.");
                         }
                         else {
                             if (upLeft == upMiddle && upMiddle == upRight && upLeft!='\u0000'){
@@ -260,16 +274,37 @@ public class Main {
                             if (countEmpty>0 && (xWins == 0 && oWins == 0)){
                                 System.out.println("Completati in continuare variabilele pana toate variabilele au atribuite X-uri sau 0-uri sau pana se castiga jocul.");
                             }
+                            if (countEmpty == 0 && (xWins == 0 && oWins == 0)){
+                                System.out.println("Remiza");
+                            }
+                            if (xWins==2){
+                                System.out.println("X a castigat!");
+                            }
+                            if (xWins == 1 && oWins == 1){
+                                System.out.println("Ati completat gresit jocul. Nu este posibil sa existe 2 castigatori.");
+                            }
+                            if (xWins==1 && oWins == 0){
+                                if (countX == countO){
+                                    System.out.println("Situatia de fata este una imposibila. X a castigat cu o mutare inainte!");
+                                }
+                                else {
+                                    System.out.println("X a castigat!");
+                                }
 
-
+                            }
+                            if (oWins == 1 && xWins == 0){
+                                if (countX>countO){
+                                    System.out.println("Situatia de fata este una imposibila. O a castigat cu o mutare inainte!");
+                                }
+                                else {
+                                    System.out.println("O a castigat!");
+                                }
+                            }
                         }
                     }
                 }
             }
-
-
-
-            }
+        }
         System.out.println(countEmpty);
         System.out.println(countX);
         System.out.println(countO);
