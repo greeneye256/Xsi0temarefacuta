@@ -3,15 +3,15 @@ package xsiovesiunea2;
 public class Main {
 
     public static void main(String[] args) {
-        char upLeft = 'X';
-        char upMiddle = 'X';
-        char upRight = '0';
-        char middleLeft = '0';
-        char middleMiddle = '0';
-        char middleRight = 'X';
-        char downLeft = 'X';
-        char downMiddle = '0';
-        char downRight = 'X';
+        char upLeft = '/u0000';
+        char upMiddle = '/u0000';
+        char upRight = '/u0000';
+        char middleLeft = '/u0000';
+        char middleMiddle = '/u0000';
+        char middleRight = '/u0000';
+        char downLeft = '/u0000';
+        char downMiddle = '/u0000';
+        char downRight = '/u0000';
 
         System.out.println("  ```````````````````");
         System.out.println("1 |  " + upLeft + "   |  " + upMiddle + "   |  " + upRight + "   |");
